@@ -93,6 +93,9 @@ class GitlabIntegration(IntegrationInstallation, GitlabIssueBasic, RepositoryMix
             'name': repo['name_with_namespace'],
         } for repo in resp]
 
+    def reinstall(self):
+        self.reinstall_repositories()
+
 
 class InstallationForm(forms.Form):
     url = forms.CharField(
