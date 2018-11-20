@@ -55,8 +55,9 @@ export default createReactClass({
     // TODO(dcramer): this API request happens twice, and we need a store for it
     if (!event) return;
     this.api.request(
-      `/projects/${this.props.orgId}/${this.props
-        .projectId}/events/${event.id}/committers/`,
+      `/projects/${this.props.orgId}/${this.props.projectId}/events/${
+        event.id
+      }/committers/`,
       {
         success: (data, _, jqXHR) => {
           this.setState(data);

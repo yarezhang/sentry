@@ -31,17 +31,23 @@ function getFormatter({filter, isGroupedByDate, truncate, utc}) {
         .filter(getFilter)
         .map(
           s =>
-            `<div>${s.marker} ${truncationFormatter(s.seriesName, truncate)}:  ${s
-              .data[1]}</div>`
+            `<div>${s.marker} ${truncationFormatter(s.seriesName, truncate)}:  ${
+              s.data[1]
+            }</div>`
         )
         .join(''),
     ].join('');
   };
 }
 
-export default function Tooltip(
-  {filter, isGroupedByDate, formatter, truncate, utc, ...props} = {}
-) {
+export default function Tooltip({
+  filter,
+  isGroupedByDate,
+  formatter,
+  truncate,
+  utc,
+  ...props
+} = {}) {
   formatter = formatter || getFormatter({filter, isGroupedByDate, truncate, utc});
 
   return {

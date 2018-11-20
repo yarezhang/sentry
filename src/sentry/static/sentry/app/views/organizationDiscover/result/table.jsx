@@ -44,7 +44,10 @@ export default class ResultTable extends React.Component {
   }
 
   cellRenderer = ({key, rowIndex, columnIndex, style}) => {
-    const {query, data: {data, meta}} = this.props;
+    const {
+      query,
+      data: {data, meta},
+    } = this.props;
     const cols = this.getColumnList();
 
     const showEventLinks = !query.aggregations.length;
@@ -72,7 +75,9 @@ export default class ResultTable extends React.Component {
 
     const value = isLinkCol
       ? this.getLink(data[rowIndex - 1])
-      : isSpacingCol ? null : getDisplayValue(data[rowIndex - 1][colName]);
+      : isSpacingCol
+      ? null
+      : getDisplayValue(data[rowIndex - 1][colName]);
 
     return (
       <Cell key={key} style={style} isOddRow={rowIndex % 2 === 1} align={align}>
@@ -101,7 +106,10 @@ export default class ResultTable extends React.Component {
   // are less than 20 columns of data to check in total.
   // Adds an empty column at the end with the remaining table width if any.
   getColumnWidths = tableWidth => {
-    const {query, data: {data}} = this.props;
+    const {
+      query,
+      data: {data},
+    } = this.props;
     const cols = this.getColumnList();
 
     const widths = [];
@@ -152,7 +160,9 @@ export default class ResultTable extends React.Component {
   };
 
   getRowHeight = (rowIndex, columnsToCheck) => {
-    const {data: {data}} = this.props;
+    const {
+      data: {data},
+    } = this.props;
 
     if (rowIndex === 0) {
       return TABLE_ROW_HEIGHT_WITH_BORDER;
@@ -175,7 +185,10 @@ export default class ResultTable extends React.Component {
   };
 
   getColumnList = () => {
-    const {query, data: {meta}} = this.props;
+    const {
+      query,
+      data: {meta},
+    } = this.props;
 
     const fields = new Set(query.fields);
 
@@ -212,7 +225,11 @@ export default class ResultTable extends React.Component {
   };
 
   renderTable() {
-    const {query, data: {data}, height} = this.props;
+    const {
+      query,
+      data: {data},
+      height,
+    } = this.props;
 
     const cols = this.getColumnList();
 
@@ -283,7 +300,7 @@ const GridContainer = styled(({visibleRows, ...props}) => <Panel {...props} />)`
 
 const Cell = styled('div')`
   ${p => !p.isOddRow && `background-color: ${p.theme.whiteDark};`} ${p =>
-      `text-align: ${p.align};`} overflow: scroll;
+    `text-align: ${p.align};`} overflow: scroll;
   font-size: 14px;
   line-height: ${TABLE_ROW_HEIGHT}px;
   padding: 0 10px;

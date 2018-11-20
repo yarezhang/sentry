@@ -20,7 +20,13 @@ const withPlugins = WrappedComponent =>
       organization: SentryTypes.Organization,
       project: SentryTypes.Project,
     },
-    mixins: [ProjectState, Reflux.connect(PluginsStore, 'store')],
+    mixins: [
+      ProjectState,
+      Reflux.connect(
+        PluginsStore,
+        'store'
+      ),
+    ],
 
     componentDidMount() {
       this.fetchPlugins();

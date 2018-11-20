@@ -91,9 +91,7 @@ class RepositoryRow extends React.Component {
               {repository.status === 'pending_deletion' && (
                 <small>
                   {' '}
-                  (
-                  <a onClick={this.cancelDelete}>{t('Cancel')}</a>
-                  )
+                  (<a onClick={this.cancelDelete}>{t('Cancel')}</a>)
                 </small>
               )}
             </Box>

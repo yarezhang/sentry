@@ -11,7 +11,9 @@ export function logException(ex, context) {
 export function logAjaxError(error, context) {
   let errorString = error.responseJSON
     ? error.responseJSON.detail || JSON.stringify(error.responseJSON, null, 2)
-    : error.responseText ? error.responseText.substr(0, 255) : '<unknown response>'; // occassionally responseText is undefined
+    : error.responseText
+    ? error.responseText.substr(0, 255)
+    : '<unknown response>'; // occassionally responseText is undefined
 
   let message = `HTTP ${error.status}: ${errorString}`;
   sdk.captureMessage(message, {

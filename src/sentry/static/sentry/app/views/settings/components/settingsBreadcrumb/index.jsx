@@ -87,7 +87,12 @@ class SettingsBreadcrumb extends React.Component {
 
 export default createReactClass({
   displayName: 'ConnectedSettingsBreadcrumb',
-  mixins: [Reflux.connect(SettingsBreadcrumbStore, 'pathMap')],
+  mixins: [
+    Reflux.connect(
+      SettingsBreadcrumbStore,
+      'pathMap'
+    ),
+  ],
   render() {
     return <SettingsBreadcrumb {...this.props} {...this.state} />;
   },

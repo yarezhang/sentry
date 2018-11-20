@@ -8,7 +8,12 @@ import OrganizationsStore from 'app/stores/organizationsStore';
 const withOrganizations = WrappedComponent =>
   createReactClass({
     displayName: `withOrganizations(${getDisplayName(WrappedComponent)})`,
-    mixins: [Reflux.connect(OrganizationsStore, 'organizations')],
+    mixins: [
+      Reflux.connect(
+        OrganizationsStore,
+        'organizations'
+      ),
+    ],
 
     render() {
       return (

@@ -137,10 +137,9 @@ const ActivityFeed = createReactClass({
     return (
       <div>
         {this.renderResults()}
-        {this.props.pagination &&
-          this.state.pageLinks && (
-            <Pagination pageLinks={this.state.pageLinks} {...this.props} />
-          )}
+        {this.props.pagination && this.state.pageLinks && (
+          <Pagination pageLinks={this.state.pageLinks} {...this.props} />
+        )}
       </div>
     );
   },

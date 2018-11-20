@@ -18,7 +18,12 @@ const withLatestContext = WrappedComponent =>
       propTypes: {
         organizations: PropTypes.arrayOf(SentryTypes.Organization),
       },
-      mixins: [Reflux.connect(LatestContextStore, 'latestContext')],
+      mixins: [
+        Reflux.connect(
+          LatestContextStore,
+          'latestContext'
+        ),
+      ],
 
       render() {
         let {organizations} = this.props;

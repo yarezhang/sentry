@@ -105,14 +105,16 @@ export const doEventsRequest = (
   const absolutePeriods = getPeriod({start, end}, {shouldDoublePeriod});
 
   return Promise.all(
-    absolutePeriods.filter(i => !!i).map(absolutePeriod =>
-      api.requestPromise(`${BASE_URL(organization)}`, {
-        query: {
-          ...urlQuery,
-          ...absolutePeriod,
-        },
-      })
-    )
+    absolutePeriods
+      .filter(i => !!i)
+      .map(absolutePeriod =>
+        api.requestPromise(`${BASE_URL(organization)}`, {
+          query: {
+            ...urlQuery,
+            ...absolutePeriod,
+          },
+        })
+      )
   ).then(results => ({
     data: results.reduce((acc, {data}) => acc.concat(data), []),
   }));

@@ -33,8 +33,9 @@ class EventRow extends React.Component {
 
   render() {
     let event = this.state.event;
-    let eventLink = `/${this.props.orgSlug}/${this.props
-      .projectSlug}/issues/${event.groupID}/events/${event.id}/`;
+    let eventLink = `/${this.props.orgSlug}/${this.props.projectSlug}/issues/${
+      event.groupID
+    }/events/${event.id}/`;
 
     let tagList = [];
     for (let key in event.tags) {

@@ -79,7 +79,9 @@ class ActivityItem extends React.Component {
               orgId={orgId}
               projectId={project.slug}
               issue={issue}
-              to={`/${orgId}/${project.slug}/issues/${issue.id}/activity/#event_${item.id}`}
+              to={`/${orgId}/${project.slug}/issues/${issue.id}/activity/#event_${
+                item.id
+              }`}
             >
               {issue.shortId}
             </IssueLink>

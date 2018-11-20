@@ -207,7 +207,8 @@ class KeyRateLimitsForm extends React.Component {
         <Feature
           features={['projects:rate-limits']}
           renderDisabled={({children, ...props}) =>
-            children({...props, renderDisabled: disabledAlert})}
+            children({...props, renderDisabled: disabledAlert})
+          }
         >
           {({hasFeature, features, organization, project, renderDisabled}) => (
             <Panel>
@@ -390,8 +391,7 @@ const KeySettings = createReactClass({
                   inline={false}
                   flexibleControlStateSize
                 >
-                  <TextCopyInput
-                  >{`<script src='${loaderLink}' crossorigin="anonymous"></script>`}</TextCopyInput>
+                  <TextCopyInput>{`<script src='${loaderLink}' crossorigin="anonymous"></script>`}</TextCopyInput>
                 </Field>
                 <SelectField
                   name="browserSdkVersion"

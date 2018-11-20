@@ -38,13 +38,15 @@ class EventsTableRow extends React.Component {
     if (!event.crashFile) {
       return null;
     }
-    let url = `/api/0/projects/${orgId}/${projectId}/events/${event.id}/attachments/${event
-      .crashFile.id}/?download=1`;
+    let url = `/api/0/projects/${orgId}/${projectId}/events/${event.id}/attachments/${
+      event.crashFile.id
+    }/?download=1`;
     let crashFileType =
       event.crashFile.type === 'event.minidump' ? 'Minidump' : 'Crash file';
     return (
       <small>
-        {crashFileType}: <a href={url}>{event.crashFile.name}</a> (<FileSize bytes={event.crashFile.size} />)
+        {crashFileType}: <a href={url}>{event.crashFile.name}</a> (
+        <FileSize bytes={event.crashFile.size} />)
       </small>
     );
   }

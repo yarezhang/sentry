@@ -82,16 +82,14 @@ const SidebarDropdown = withApi(
                 >
                   <div style={{display: 'flex', alignItems: 'flex-start'}}>
                     {avatar}
-                    {hasOrganization &&
-                      !collapsed &&
-                      orientation !== 'top' && (
-                        <NameAndOrgWrapper>
-                          <DropdownOrgName>
-                            {org.name} <i className="icon-arrow-down" />
-                          </DropdownOrgName>
-                          <DropdownUserName>{user.name}</DropdownUserName>
-                        </NameAndOrgWrapper>
-                      )}
+                    {hasOrganization && !collapsed && orientation !== 'top' && (
+                      <NameAndOrgWrapper>
+                        <DropdownOrgName>
+                          {org.name} <i className="icon-arrow-down" />
+                        </DropdownOrgName>
+                        <DropdownUserName>{user.name}</DropdownUserName>
+                      </NameAndOrgWrapper>
+                    )}
                   </div>
                 </SidebarDropdownActor>
 

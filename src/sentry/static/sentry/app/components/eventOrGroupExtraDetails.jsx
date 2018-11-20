@@ -64,8 +64,9 @@ const EventOrGroupExtraDetails = createReactClass({
                 <TimeSince date={lastSeen} suffix={t('ago')} />
               </React.Fragment>
             )}
-            {firstSeen &&
-              lastSeen && <span className="hidden-xs hidden-sm">&nbsp;—&nbsp;</span>}
+            {firstSeen && lastSeen && (
+              <span className="hidden-xs hidden-sm">&nbsp;—&nbsp;</span>
+            )}
             {firstSeen && (
               <TimeSince
                 date={firstSeen}
@@ -120,8 +121,9 @@ const EventOrGroupExtraDetails = createReactClass({
             );
           })}
 
-        {showAssignee &&
-          assignedTo && <div>{tct('Assigned to [name]', {name: assignedTo.name})}</div>}
+        {showAssignee && assignedTo && (
+          <div>{tct('Assigned to [name]', {name: assignedTo.name})}</div>
+        )}
       </GroupExtra>
     );
   },

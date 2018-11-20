@@ -87,7 +87,12 @@ class FormSource extends React.Component {
 const FormSourceContainer = withRouter(
   createReactClass({
     displayName: 'FormSourceContainer',
-    mixins: [Reflux.connect(FormSearchStore, 'searchMap')],
+    mixins: [
+      Reflux.connect(
+        FormSearchStore,
+        'searchMap'
+      ),
+    ],
 
     componentDidMount() {
       // Loads form fields

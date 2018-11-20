@@ -89,10 +89,9 @@ class Dashboard extends React.Component {
             </LazyLoad>
           );
         })}
-        {teamSlugs.length === 0 &&
-          favorites.length === 0 && (
-            <EmptyState projects={projects} teams={teams} organization={organization} />
-          )}
+        {teamSlugs.length === 0 && favorites.length === 0 && (
+          <EmptyState projects={projects} teams={teams} organization={organization} />
+        )}
       </React.Fragment>
     );
   }

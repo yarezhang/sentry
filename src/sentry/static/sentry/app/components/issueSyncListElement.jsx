@@ -110,14 +110,13 @@ class IssueSyncElement extends React.Component {
           {this.getIcon()}
           {this.getLink()}
         </Hovercard>
-        {this.props.onOpen &&
-          this.props.onClose && (
-            <OpenCloseIcon
-              src="icon-close"
-              onClick={this.isLinked() ? this.handleDelete : this.props.onOpen}
-              isLinked={this.isLinked()}
-            />
-          )}
+        {this.props.onOpen && this.props.onClose && (
+          <OpenCloseIcon
+            src="icon-close"
+            onClick={this.isLinked() ? this.handleDelete : this.props.onOpen}
+            isLinked={this.isLinked()}
+          />
+        )}
       </IssueSyncListElementContainer>
     );
   }

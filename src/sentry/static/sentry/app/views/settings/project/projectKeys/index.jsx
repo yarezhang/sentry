@@ -161,7 +161,9 @@ const KeyRow = createReactClass({
             )}
           </Box>
           <Flex align="center">
-            {controls.map((c, n) => <KeyControl key={n}> {c}</KeyControl>)}
+            {controls.map((c, n) => (
+              <KeyControl key={n}> {c}</KeyControl>
+            ))}
           </Flex>
         </PanelHeader>
 

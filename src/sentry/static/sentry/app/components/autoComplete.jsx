@@ -316,7 +316,8 @@ class AutoComplete extends React.Component {
               open: this.openMenu,
               close: this.closeMenu,
             },
-          })}
+          })
+        }
       </DropdownMenu>
     );
   }

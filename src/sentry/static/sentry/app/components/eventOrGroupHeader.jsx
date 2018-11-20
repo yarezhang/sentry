@@ -76,9 +76,9 @@ class EventOrGroupHeader extends React.Component {
     let Wrapper;
     if (includeLink) {
       props.to = {
-        pathname: `/${orgId}/${projectId}/issues/${isEvent ? groupID : id}/${isEvent
-          ? `events/${data.id}/`
-          : ''}`,
+        pathname: `/${orgId}/${projectId}/issues/${isEvent ? groupID : id}/${
+          isEvent ? `events/${data.id}/` : ''
+        }`,
         search: `${this.props.query ? `?query=${this.props.query}` : ''}`,
       };
       Wrapper = ProjectLink;
@@ -91,12 +91,11 @@ class EventOrGroupHeader extends React.Component {
         {...props}
         style={data.status === 'resolved' ? {textDecoration: 'line-through'} : null}
       >
-        {!hideLevel &&
-          level && (
-            <Tooltip title={`Error level: ${capitalize(level)}`}>
-              <GroupLevel level={data.level} />
-            </Tooltip>
-          )}
+        {!hideLevel && level && (
+          <Tooltip title={`Error level: ${capitalize(level)}`}>
+            <GroupLevel level={data.level} />
+          </Tooltip>
+        )}
         {!hideIcons && data.status === 'ignored' && <Muted className="icon-soundoff" />}
         {!hideIcons && data.isBookmarked && <Starred className="icon-star-solid" />}
         <EventOrGroupTitle
@@ -155,7 +154,11 @@ const LocationWrapper = styled.div`
 
 function Location(props) {
   let {children, ...rest} = props;
-  return <LocationWrapper{...rest}>in <span>{children}</span></LocationWrapper>;
+  return (
+    <LocationWrapper {...rest}>
+      in <span>{children}</span>
+    </LocationWrapper>
+  );
 }
 
 const Message = styled.div`

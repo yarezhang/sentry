@@ -58,7 +58,9 @@ const InstallPromptBanner = createReactClass({
     let projectCount = projects.length;
     if (projectCount > 0 && getPlatformName(projects[projectCount - 1].platform)) {
       let project = projects[projectCount - 1];
-      url = `/onboarding/${organization.slug}/${project.slug}/configure/${project.platform}`;
+      url = `/onboarding/${organization.slug}/${project.slug}/configure/${
+        project.platform
+      }`;
     }
     return url;
   },

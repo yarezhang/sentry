@@ -51,7 +51,10 @@ const ProjectContext = createReactClass({
 
   mixins: [
     ApiMixin,
-    Reflux.connect(MemberListStore, 'memberList'),
+    Reflux.connect(
+      MemberListStore,
+      'memberList'
+    ),
     Reflux.listenTo(ProjectsStore, 'onProjectChange'),
     OrganizationState,
   ],

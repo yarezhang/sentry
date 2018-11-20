@@ -185,28 +185,26 @@ const ProjectFiltersChart = createReactClass({
         <PanelBody>
           {isLoading && <LoadingIndicator />}
           {hasError && <LoadingError onRetry={this.fetchData} />}
-          {hasLoaded &&
-            !this.state.blankStats && (
-              <StackedBarChart
-                series={this.state.formattedData}
-                label="events"
-                barClasses={classes}
-                className="standard-barchart filtered-stats-barchart"
-                tooltip={this.renderTooltip}
-                minHeights={classes.map(p => p == 'legacy-browsers' ? 1 : 0)}
-              />
-            )}
-          {hasLoaded &&
-            this.state.blankStats && (
-              <EmptyMessage css={{flexDirection: 'column', alignItems: 'center'}}>
-                <h3 css={noMarginBottom}>{t('Nothing filtered in the last 30 days.')}</h3>
-                <TextBlock css={{fontSize: '0.9em', ...noMarginBottom}}>
-                  {t(
-                    'Issues filtered as a result of your settings below will be shown here.'
-                  )}
-                </TextBlock>
-              </EmptyMessage>
-            )}
+          {hasLoaded && !this.state.blankStats && (
+            <StackedBarChart
+              series={this.state.formattedData}
+              label="events"
+              barClasses={classes}
+              className="standard-barchart filtered-stats-barchart"
+              tooltip={this.renderTooltip}
+              minHeights={classes.map(p => (p == 'legacy-browsers' ? 1 : 0))}
+            />
+          )}
+          {hasLoaded && this.state.blankStats && (
+            <EmptyMessage css={{flexDirection: 'column', alignItems: 'center'}}>
+              <h3 css={noMarginBottom}>{t('Nothing filtered in the last 30 days.')}</h3>
+              <TextBlock css={{fontSize: '0.9em', ...noMarginBottom}}>
+                {t(
+                  'Issues filtered as a result of your settings below will be shown here.'
+                )}
+              </TextBlock>
+            </EmptyMessage>
+          )}
         </PanelBody>
       </Panel>
     );

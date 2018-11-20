@@ -219,9 +219,15 @@ class DropdownMenu extends React.Component {
   getRootProps = props => props;
 
   // Actor is the component that will open the dropdown menu
-  getActorProps = (
-    {onClick, onMouseEnter, onMouseLeave, onKeyDown, isStyled, style, ...props} = {}
-  ) => {
+  getActorProps = ({
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    onKeyDown,
+    isStyled,
+    style,
+    ...props
+  } = {}) => {
     let {isNestedDropdown, closeOnEscape} = this.props;
 
     // Props that the actor needs to have <DropdownMenu> work

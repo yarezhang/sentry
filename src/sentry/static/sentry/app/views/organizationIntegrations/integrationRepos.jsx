@@ -71,8 +71,9 @@ export default class IntegrationRepos extends AsyncComponent {
   searchRepositoriesRequest = searchQuery => {
     let orgId = this.context.organization.slug;
     let query = {search: searchQuery};
-    let endpoint = `/organizations/${orgId}/integrations/${this.props.integration
-      .id}/repos/`;
+    let endpoint = `/organizations/${orgId}/integrations/${
+      this.props.integration.id
+    }/repos/`;
     return this.api.request(endpoint, {
       method: 'GET',
       query,

@@ -276,9 +276,11 @@ const NoteInput = createReactClass({
 
   mentionableTeams() {
     let {group} = this.props;
-    return (ProjectsStore.getBySlug(group.project.slug) || {
-      teams: [],
-    }).teams.map(team => ({
+    return (
+      ProjectsStore.getBySlug(group.project.slug) || {
+        teams: [],
+      }
+    ).teams.map(team => ({
       id: buildTeamId(team.id),
       display: `#${team.slug}`,
       email: team.id,
@@ -348,7 +350,8 @@ const NoteInput = createReactClass({
               required={true}
               autoFocus={true}
               displayTransform={(id, display, type) =>
-                `${type === 'member' ? '@' : ''}${display}`}
+                `${type === 'member' ? '@' : ''}${display}`
+              }
               markup="**[sentry.strip:__type__]__display__**"
             >
               <Mention

@@ -30,8 +30,8 @@ export function paramsToQueryArgs(params) {
   let p = params.itemIds
     ? {id: params.itemIds} // items matching array of itemids
     : params.query
-      ? {query: params.query} // items matching search query
-      : undefined; // all items
+    ? {query: params.query} // items matching search query
+    : undefined; // all items
 
   // only include environment if it is not null/undefined
   if (params.query && !isNil(params.environment)) {

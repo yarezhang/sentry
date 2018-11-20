@@ -102,7 +102,7 @@ export default class OrganizationMemberRow extends React.PureComponent {
     let detailsUrl = recreateRoute(id, {routes, params});
     let isInviteSuccessful = status === 'success';
     let isInviting = status === 'loading';
-    let canResend = (!expired && canAddMembers && (pending || needsSso));
+    let canResend = !expired && canAddMembers && (pending || needsSso);
 
     return (
       <PanelItem align="center" p={0} py={2}>
@@ -127,8 +127,7 @@ export default class OrganizationMemberRow extends React.PureComponent {
                 <div>
                   {expired ? (
                     <strong>{t('Expired')}</strong>
-                  ) :
-                  pending ? (
+                  ) : pending ? (
                     <strong>{t('Invited')}</strong>
                   ) : (
                     <strong>{t('Missing SSO Link')}</strong>
@@ -141,17 +140,15 @@ export default class OrganizationMemberRow extends React.PureComponent {
                   </div>
                 )}
                 {isInviteSuccessful && <span>Sent!</span>}
-                {!isInviting &&
-                  !isInviteSuccessful &&
-                  canResend && (
-                    <ResendInviteButton
-                      priority="primary"
-                      size="xsmall"
-                      onClick={this.handleSendInvite}
-                    >
-                      {t('Resend invite')}
-                    </ResendInviteButton>
-                  )}
+                {!isInviting && !isInviteSuccessful && canResend && (
+                  <ResendInviteButton
+                    priority="primary"
+                    size="xsmall"
+                    onClick={this.handleSendInvite}
+                  >
+                    {t('Resend invite')}
+                  </ResendInviteButton>
+                )}
               </div>
             ) : (
               <div>
@@ -173,74 +170,68 @@ export default class OrganizationMemberRow extends React.PureComponent {
 
         {showRemoveButton || showLeaveButton ? (
           <Box px={2} w={140}>
-            {showRemoveButton &&
-              canRemoveMember && (
-                <Confirm
-                  message={tct('Are you sure you want to remove [name] from [orgName]?', {
-                    name,
-                    orgName,
-                  })}
-                  onConfirm={this.handleRemove}
-                  onSuccess={tct('Removed [name] from [orgName]', {
-                    name,
-                    orgName,
-                  })}
-                  onError={tct('Error removing [name] from [orgName]', {
-                    name,
-                    orgName,
-                  })}
-                >
-                  <Button icon="icon-circle-subtract" size="small" busy={this.state.busy}>
-                    {t('Remove')}
-                  </Button>
-                </Confirm>
-              )}
-
-            {showRemoveButton &&
-              !canRemoveMember && (
-                <Button
-                  disabled
-                  size="small"
-                  title={t('You do not have access to remove member')}
-                  icon="icon-circle-subtract"
-                >
+            {showRemoveButton && canRemoveMember && (
+              <Confirm
+                message={tct('Are you sure you want to remove [name] from [orgName]?', {
+                  name,
+                  orgName,
+                })}
+                onConfirm={this.handleRemove}
+                onSuccess={tct('Removed [name] from [orgName]', {
+                  name,
+                  orgName,
+                })}
+                onError={tct('Error removing [name] from [orgName]', {
+                  name,
+                  orgName,
+                })}
+              >
+                <Button icon="icon-circle-subtract" size="small" busy={this.state.busy}>
                   {t('Remove')}
                 </Button>
-              )}
+              </Confirm>
+            )}
 
-            {showLeaveButton &&
-              memberCanLeave && (
-                <Confirm
-                  message={tct('Are you sure you want to leave [orgName]?', {
-                    orgName,
-                  })}
-                  onConfirm={this.handleLeave}
-                  onSuccess={tct('Left [orgName]', {
-                    orgName,
-                  })}
-                  onError={tct('Error leaving [orgName]', {
-                    orgName,
-                  })}
-                >
-                  <Button priority="danger" size="small" icon="icon-exit">
-                    {t('Leave')}
-                  </Button>
-                </Confirm>
-              )}
+            {showRemoveButton && !canRemoveMember && (
+              <Button
+                disabled
+                size="small"
+                title={t('You do not have access to remove member')}
+                icon="icon-circle-subtract"
+              >
+                {t('Remove')}
+              </Button>
+            )}
 
-            {showLeaveButton &&
-              !memberCanLeave && (
-                <Button
-                  size="small"
-                  icon="icon-exit"
-                  disabled
-                  title={t(
-                    'You cannot leave the organization as you are the only owner.'
-                  )}
-                >
+            {showLeaveButton && memberCanLeave && (
+              <Confirm
+                message={tct('Are you sure you want to leave [orgName]?', {
+                  orgName,
+                })}
+                onConfirm={this.handleLeave}
+                onSuccess={tct('Left [orgName]', {
+                  orgName,
+                })}
+                onError={tct('Error leaving [orgName]', {
+                  orgName,
+                })}
+              >
+                <Button priority="danger" size="small" icon="icon-exit">
                   {t('Leave')}
                 </Button>
-              )}
+              </Confirm>
+            )}
+
+            {showLeaveButton && !memberCanLeave && (
+              <Button
+                size="small"
+                icon="icon-exit"
+                disabled
+                title={t('You cannot leave the organization as you are the only owner.')}
+              >
+                {t('Leave')}
+              </Button>
+            )}
           </Box>
         ) : null}
       </PanelItem>

@@ -32,8 +32,9 @@ class EventUserFeedback extends React.Component {
                     {report.event.id && (
                       <small>
                         <Link
-                          to={`/${orgId}/${projectId}/issues/${issueId}/events/${report
-                            .event.id}`}
+                          to={`/${orgId}/${projectId}/issues/${issueId}/events/${
+                            report.event.id
+                          }`}
                         >
                           View event
                         </Link>

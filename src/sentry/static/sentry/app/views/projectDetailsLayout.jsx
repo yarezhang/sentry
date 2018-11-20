@@ -18,7 +18,13 @@ const ProjectDetailsLayout = createReactClass({
     environment: SentryTypes.Environment,
   },
 
-  mixins: [ProjectState, Reflux.connect(EnvironmentStore, 'environments')],
+  mixins: [
+    ProjectState,
+    Reflux.connect(
+      EnvironmentStore,
+      'environments'
+    ),
+  ],
 
   getInitialState() {
     return {

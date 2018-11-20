@@ -10,7 +10,12 @@ import theme from 'app/utils/theme';
 
 const Alerts = createReactClass({
   displayName: 'Alerts',
-  mixins: [Reflux.connect(AlertStore, 'alerts')],
+  mixins: [
+    Reflux.connect(
+      AlertStore,
+      'alerts'
+    ),
+  ],
 
   getInitialState() {
     return {

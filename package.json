@@ -179,7 +179,7 @@
     "jest": "23.4.0",
     "jest-junit": "^3.4.1",
     "mockdate": "2.0.2",
-    "prettier": "1.7.4",
+    "prettier": "1.15.2",
     "react-test-renderer": "16.5.0",
     "sinon": "1.17.2",
     "sinon-chai": "2.8.0",

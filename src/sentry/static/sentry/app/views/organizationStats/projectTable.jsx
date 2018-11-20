@@ -18,42 +18,44 @@ const ProjectTable = ({projectMap, projectTotals, orgTotal, organization}) => {
     if (item === 0) {
       return '0%';
     }
-    return parseInt(item / total * 100, 10) + '%';
+    return parseInt((item / total) * 100, 10) + '%';
   };
 
   if (!projectTotals) {
     return <div />;
   }
 
-  return projectTotals.sort((a, b) => b.received - a.received).map((item, index) => {
-    let project = projectMap[item.id];
+  return projectTotals
+    .sort((a, b) => b.received - a.received)
+    .map((item, index) => {
+      let project = projectMap[item.id];
 
-    if (!project) return null;
+      if (!project) return null;
 
-    return (
-      <StyledProjectTableLayout key={index}>
-        <StyledProjectTitle>
-          <Link to={`/${organization.slug}/${project.slug}/`}>{project.slug}</Link>
-        </StyledProjectTitle>
-        <ProjectTableDataElement>
-          <Count value={item.accepted} />
-          <Percentage>{getPercent(item.accepted, orgTotal.accepted)}</Percentage>
-        </ProjectTableDataElement>
-        <ProjectTableDataElement>
-          <Count value={item.rejected} />
-          <Percentage>{getPercent(item.rejected, orgTotal.rejected)}</Percentage>
-        </ProjectTableDataElement>
-        <ProjectTableDataElement>
-          <Count value={item.blacklisted} />
-          <Percentage>{getPercent(item.blacklisted, orgTotal.blacklisted)}</Percentage>
-        </ProjectTableDataElement>
-        <ProjectTableDataElement>
-          <Count value={item.received} />
-          <Percentage>{getPercent(item.received, orgTotal.received)}</Percentage>
-        </ProjectTableDataElement>
-      </StyledProjectTableLayout>
-    );
-  });
+      return (
+        <StyledProjectTableLayout key={index}>
+          <StyledProjectTitle>
+            <Link to={`/${organization.slug}/${project.slug}/`}>{project.slug}</Link>
+          </StyledProjectTitle>
+          <ProjectTableDataElement>
+            <Count value={item.accepted} />
+            <Percentage>{getPercent(item.accepted, orgTotal.accepted)}</Percentage>
+          </ProjectTableDataElement>
+          <ProjectTableDataElement>
+            <Count value={item.rejected} />
+            <Percentage>{getPercent(item.rejected, orgTotal.rejected)}</Percentage>
+          </ProjectTableDataElement>
+          <ProjectTableDataElement>
+            <Count value={item.blacklisted} />
+            <Percentage>{getPercent(item.blacklisted, orgTotal.blacklisted)}</Percentage>
+          </ProjectTableDataElement>
+          <ProjectTableDataElement>
+            <Count value={item.received} />
+            <Percentage>{getPercent(item.received, orgTotal.received)}</Percentage>
+          </ProjectTableDataElement>
+        </StyledProjectTableLayout>
+      );
+    });
 };
 
 ProjectTable.propTypes = {

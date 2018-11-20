@@ -92,12 +92,11 @@ class SidebarItem extends React.Component {
         >
           <SidebarItemWrapper>
             <SidebarItemIcon>{icon}</SidebarItemIcon>
-            {!collapsed &&
-              !isTop && (
-                <SidebarItemLabel>
-                  <TextOverflow>{label}</TextOverflow>
-                </SidebarItemLabel>
-              )}
+            {!collapsed && !isTop && (
+              <SidebarItemLabel>
+                <TextOverflow>{label}</TextOverflow>
+              </SidebarItemLabel>
+            )}
             {badge > 0 && (
               <SidebarItemBadge collapsed={collapsed}>{badge}</SidebarItemBadge>
             )}

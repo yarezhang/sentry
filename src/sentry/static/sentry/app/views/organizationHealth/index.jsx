@@ -31,7 +31,9 @@ class OrganizationHealth extends React.Component {
       specifiers:
         typeof query.specifiers === 'string'
           ? [query.specifiers]
-          : Array.isArray(query.specifiers) ? query.specifiers : [],
+          : Array.isArray(query.specifiers)
+          ? query.specifiers
+          : [],
       period: query.period || '7d',
     };
   }

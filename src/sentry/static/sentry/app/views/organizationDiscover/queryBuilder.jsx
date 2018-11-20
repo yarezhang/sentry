@@ -173,7 +173,9 @@ export default function createQueryBuilder(initial = {}, organization) {
   function fetch(data, cursor = '0:0:1') {
     const api = new Client();
     const limit = data.limit || 1000;
-    const endpoint = `/organizations/${organization.slug}/discover/query/?per_page=${limit}&cursor=${cursor}`;
+    const endpoint = `/organizations/${
+      organization.slug
+    }/discover/query/?per_page=${limit}&cursor=${cursor}`;
 
     data = data || getExternal();
 

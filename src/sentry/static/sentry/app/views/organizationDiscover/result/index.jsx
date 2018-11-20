@@ -147,7 +147,11 @@ export default class Result extends React.Component {
   }
 
   render() {
-    const {data: {baseQuery, byDayQuery}, savedQuery, onFetchPage} = this.props;
+    const {
+      data: {baseQuery, byDayQuery},
+      savedQuery,
+      onFetchPage,
+    } = this.props;
 
     const {view} = this.state;
 

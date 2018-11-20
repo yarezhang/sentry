@@ -174,8 +174,9 @@ const ProjectDebugSymbols = createReactClass({
     let access = this.getAccess();
 
     let rows = this.state.debugFiles.map((dsym, key) => {
-      let url = `${this.api
-        .baseUrl}/projects/${orgId}/${projectId}/files/dsyms/?id=${dsym.id}`;
+      let url = `${this.api.baseUrl}/projects/${orgId}/${projectId}/files/dsyms/?id=${
+        dsym.id
+      }`;
       let fileType = getFileType(dsym);
       let symbolType = fileType ? `${dsym.symbolType} ${fileType}` : dsym.symbolType;
       let features = dsym.data && dsym.data.features;

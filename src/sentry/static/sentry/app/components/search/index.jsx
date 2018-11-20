@@ -195,8 +195,9 @@ class Search extends React.Component {
                             getItemProps,
                           });
                         })}
-                      {!isLoading &&
-                        !hasAnyResults && <EmptyItem>{t('No results found')}</EmptyItem>}
+                      {!isLoading && !hasAnyResults && (
+                        <EmptyItem>{t('No results found')}</EmptyItem>
+                      )}
                     </DropdownBox>
                   )}
                 </SearchSources>

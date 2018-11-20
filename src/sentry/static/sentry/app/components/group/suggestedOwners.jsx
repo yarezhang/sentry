@@ -231,7 +231,8 @@ const SuggestedOwners = createReactClass({
                   project,
                   organization: org,
                   issueId: group.id,
-                })}
+                })
+              }
               className="btn btn-default btn-sm btn-create-ownership-rule"
             >
               {t('Create Ownership Rule')}

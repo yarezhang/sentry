@@ -255,7 +255,7 @@ class HealthRequestWithParams extends React.Component {
     return new Map(
       transformedData.map(([name, value]) => [
         name,
-        Math.round(value / total * 10000) / 100,
+        Math.round((value / total) * 10000) / 100,
       ])
     );
   };
@@ -415,8 +415,7 @@ class HealthRequestWithParams extends React.Component {
       originalData: originalTagData,
       totals: tagTotals,
       dataWithPercentages: tagDataWithPercentages,
-    } =
-      (tagData && this.processData(tagData)) || {};
+    } = (tagData && this.processData(tagData)) || {};
 
     const {
       data: transformedTimeseriesData,
@@ -426,8 +425,7 @@ class HealthRequestWithParams extends React.Component {
       originalPreviousData: originalPreviousTimeseriesData,
       previousData: previousTimeseriesData,
       timeAggregatedData,
-    } =
-      (timeseriesData && this.processData(timeseriesData, true)) || {};
+    } = (timeseriesData && this.processData(timeseriesData, true)) || {};
 
     return children({
       loading,

@@ -97,14 +97,13 @@ class SimilarList extends React.Component {
             />
           ))}
 
-          {hasHiddenItems &&
-            !this.state.showAllItems && (
-              <div className="similar-items-footer">
-                <button className="btn btn-default btn-xl" onClick={this.handleShowAll}>
-                  Show {filteredItems.length} issues below threshold
-                </button>
-              </div>
-            )}
+          {hasHiddenItems && !this.state.showAllItems && (
+            <div className="similar-items-footer">
+              <button className="btn btn-default btn-xl" onClick={this.handleShowAll}>
+                Show {filteredItems.length} issues below threshold
+              </button>
+            </div>
+          )}
         </div>
         <Pagination pageLinks={pageLinks} />
       </div>

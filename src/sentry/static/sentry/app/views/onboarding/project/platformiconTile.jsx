@@ -12,9 +12,9 @@ class PlatformiconTile extends React.Component {
 
     return (
       <li
-        className={`platform-tile list-unstyled ${platform} ${platform.split(
-          '-'
-        )[0]} ${className}`}
+        className={`platform-tile list-unstyled ${platform} ${
+          platform.split('-')[0]
+        } ${className}`}
       >
         <span className={`platformicon platformicon-${platform}`} />
       </li>

@@ -57,8 +57,9 @@ class HeaderItem extends React.Component {
       >
         <IconContainer hasSelected={hasSelected}>{icon}</IconContainer>
         <Content>{children}</Content>
-        {hasSelected &&
-          allowClear && <StyledClose src="icon-close" onClick={this.handleClear} />}
+        {hasSelected && allowClear && (
+          <StyledClose src="icon-close" onClick={this.handleClear} />
+        )}
         <StyledChevron
           isOpen={isOpen}
           hasChanges={hasChanges}

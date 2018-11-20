@@ -24,13 +24,12 @@ class MessageInterface extends React.Component {
           </Annotated>
         </pre>
 
-        {data.params &&
-          !data.formatted && (
-            <div>
-              <h5>{t('Params')}</h5>
-              <pre className="plain">{JSON.stringify(data.params, null, 2)}</pre>
-            </div>
-          )}
+        {data.params && !data.formatted && (
+          <div>
+            <h5>{t('Params')}</h5>
+            <pre className="plain">{JSON.stringify(data.params, null, 2)}</pre>
+          </div>
+        )}
       </EventDataSection>
     );
   }

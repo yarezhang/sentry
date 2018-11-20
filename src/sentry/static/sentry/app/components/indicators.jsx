@@ -70,7 +70,12 @@ class Indicators extends React.Component {
 
 const IndicatorsContainer = createReactClass({
   displayName: 'IndicatorsContainer',
-  mixins: [Reflux.connect(IndicatorStore, 'items')],
+  mixins: [
+    Reflux.connect(
+      IndicatorStore,
+      'items'
+    ),
+  ],
 
   getInitialState() {
     return {

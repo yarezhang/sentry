@@ -85,7 +85,12 @@ class GlobalModal extends React.Component {
 
 const GlobalModalContainer = createReactClass({
   displayName: 'GlobalModalContainer',
-  mixins: [Reflux.connect(ModalStore, 'modalStore')],
+  mixins: [
+    Reflux.connect(
+      ModalStore,
+      'modalStore'
+    ),
+  ],
 
   getInitialState() {
     return {

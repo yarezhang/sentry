@@ -9,7 +9,13 @@ import LatestContextStore from 'app/stores/latestContextStore';
 const BookmarkToggle = createReactClass({
   displayName: 'BookmarkToggle',
 
-  mixins: [ApiMixin, Reflux.connect(LatestContextStore, 'latestContext')],
+  mixins: [
+    ApiMixin,
+    Reflux.connect(
+      LatestContextStore,
+      'latestContext'
+    ),
+  ],
 
   handleBookmarkClick() {
     let {project, organization} = this.state.latestContext;

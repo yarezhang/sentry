@@ -10,7 +10,7 @@ import overflowEllipsis from 'app/styles/overflowEllipsis';
 import space from 'app/styles/space';
 
 const Delta = ({current, previous, className}) => {
-  const changePercent = Math.round(Math.abs(current - previous) / previous * 100);
+  const changePercent = Math.round((Math.abs(current - previous) / previous) * 100);
   const direction = !changePercent ? 0 : current - previous;
   return (
     <StyledDelta direction={direction} className={className}>
@@ -108,8 +108,7 @@ const Row = styled(function RowComponent({className, data, rowIndex, onClick, ch
   return (
     <div
       className={className}
-      onClick={e =>
-        typeof onClick === 'function' && onClick(data[rowIndex], e)}
+      onClick={e => typeof onClick === 'function' && onClick(data[rowIndex], e)}
     >
       {children}
     </div>

@@ -274,8 +274,7 @@ class EventsRequestWithParams extends React.Component {
       originalPreviousData: originalPreviousTimeseriesData,
       previousData: previousTimeseriesData,
       timeAggregatedData,
-    } =
-      (timeseriesData && this.processData(timeseriesData, true)) || {};
+    } = (timeseriesData && this.processData(timeseriesData, true)) || {};
 
     return children({
       loading,

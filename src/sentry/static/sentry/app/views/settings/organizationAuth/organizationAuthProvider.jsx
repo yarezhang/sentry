@@ -74,7 +74,8 @@ class OrganizationAuthProvider extends React.Component {
                 `While Sentry will try to be clever about directing members to the
               appropriate login form, you're safest just to hit up your
               organization-specific login when visiting the app`
-              )}:
+              )}
+              :
             </p>
 
             <pre>

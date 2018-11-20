@@ -221,13 +221,15 @@ class OrganizationHealthErrors extends React.Component {
                     data={data.map(row => [row, row])}
                     widths={[null, 120]}
                     getValue={item =>
-                      typeof item === 'number' ? item : item && item.count}
+                      typeof item === 'number' ? item : item && item.count
+                    }
                     renderHeaderCell={({getValue, value, columnIndex}) => {
                       return (
                         <Flex justify="space-between">
                           <ReleaseName
                             onClick={() =>
-                              this.handleSetSpecifier(tag, value[tag]._health_id)}
+                              this.handleSetSpecifier(tag, value[tag]._health_id)
+                            }
                           >
                             {value[tag].value.shortVersion}
                           </ReleaseName>
