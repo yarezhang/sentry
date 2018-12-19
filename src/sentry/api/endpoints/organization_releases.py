@@ -165,7 +165,7 @@ class OrganizationReleasesEndpoint(OrganizationReleasesBaseEndpoint, Environment
                               ``id`` (the sha of the commit), and can optionally
                               include ``repository``, ``message``, ``patch_set``,
                               ``author_name``, ``author_email``, and ``timestamp``.
-        :param array refs: an optional way to indicate the start and end commits
+        :param array ref: an optional way to indicate the start and end commits
                            for each repository included in a release. Head commits
                            must include parameters ``repository`` and ``commit``
                            (the HEAD sha). They can optionally include ``previousCommit``
