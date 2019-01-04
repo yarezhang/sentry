@@ -334,11 +334,12 @@ class SnubaEvent(EventCommon):
         node_id = SnubaEvent.generate_node_id(self.project_id, self.event_id)
         self.data = NodeData(None, node_id, data=None)
 
-    def save(self):
-        raise NotImplementedError
     # TODO unify with next_event/prev_event PR and create a snuba implementation
     # of those methods (can it be done without 2 extra queries?)
 
+    # ============================================
+    # Replication of django stuff
+    # ============================================
     @property
     def datetime(self):
         """
@@ -352,6 +353,16 @@ class SnubaEvent(EventCommon):
     @property
     def time_spent(self):
         return None
+
+    @property
+    def id(self):
+        # Because a snuba event will never have a django row id, just return
+        # the hex event_id here. We should be moving to a world where we never
+        # have to reference the row id anyway.
+        return self.event_id
+
+    def save(self):
+        raise NotImplementedError
 
 
 class Event(Model, EventCommon):
