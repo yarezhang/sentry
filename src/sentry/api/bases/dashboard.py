@@ -41,3 +41,7 @@ class WidgetSerializer(serializers.Serializer):
         if display_type not in WidgetDisplayTypes.__members__:
             raise ValueError('Widget display_type %s not recognized.' % display_type)
         return attrs
+
+
+class DashboardSerializer(serializers.Serializer):
+    title = serializers.CharField(required=True)
