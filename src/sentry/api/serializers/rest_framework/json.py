@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import six
 from django.utils.translation import ugettext_lazy as _
 from rest_framework.serializers import WritableField
-from rest_framework.utils import html, json
+from sentry.api.serializers.rest_framework.utils_json import json
 
 # JSONField taken from Django rest framework version 3.9.0
 # See https://github.com/encode/django-rest-framework/blob/master/rest_framework/fields.py
@@ -20,6 +20,12 @@ class empty(object):
     pass
 
 
+def is_html_input(dictionary):
+    # MultiDict type datastructures are used to represent HTML form input,
+    # which may have more than one value for each key.
+    return hasattr(dictionary, 'getlist')
+
+
 class JSONField(WritableField):
     default_error_messages = {
         'invalid': _('Value must be valid JSON.')
@@ -30,7 +36,7 @@ class JSONField(WritableField):
         super(JSONField, self).__init__(*args, **kwargs)
 
     def get_value(self, dictionary):
-        if html.is_html_input(dictionary) and self.field_name in dictionary:
+        if is_html_input(dictionary) and self.field_name in dictionary:
             # When HTML form input is used, mark up the input
             # as being a JSON string, rather than a JSON primitive.
             class JSONString(six.text_type):

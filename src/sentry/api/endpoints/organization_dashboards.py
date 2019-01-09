@@ -50,15 +50,10 @@ class OrganizationDashboardsEndpoint(OrganizationEndpoint):
                 dashboard = Dashboard.objects.create(
                     organization_id=organization.id,
                     title=result['title'],
-                    owner=result.get('owner') or request.user,
+                    owner=result['owner'],
                     data=result.get('data'),
-                    date_added=result.get('dateAdded'),
                 )
-        except IntegrityError:
-            # dashboard, created = Dashboard.objects.get(
-            #     organization_id=organization.id,
-            #     version=result['title'],
-            # ), False
-            pass  # hmm what to do here?
+        except IntegrityError as e:
+            return Response(e.message, status=208)
 
         return Response(serialize(dashboard, request.user), status=201)
