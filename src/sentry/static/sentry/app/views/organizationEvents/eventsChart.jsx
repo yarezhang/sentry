@@ -254,7 +254,7 @@ class EventsChart extends React.Component {
               <LineChart
                 onChartReady={this.handleChartReady}
                 isGroupedByDate
-                useUtc={utc}
+                utc={utc}
                 interval={interval === '1h' ? 'hour' : 'day'}
                 series={timeseriesData}
                 seriesOptions={{
