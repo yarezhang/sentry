@@ -141,6 +141,7 @@ export default class QueryFields extends React.Component {
         </Fieldset>
         <Fieldset>
           <NumberField
+            max={1000}
             name="limit"
             label={<SidebarLabel>{t('Limit')}</SidebarLabel>}
             placeholder="#"

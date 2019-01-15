@@ -53,38 +53,40 @@ export default class NewQuery extends React.Component {
     } = this.props;
     return (
       <QueryFieldsContainer>
-        <QueryFields
-          queryBuilder={queryBuilder}
-          onUpdateField={onUpdateField}
-          isLoading={isLoading}
-          actions={
-            <Flex justify="space-between">
-              <Flex>
-                <Box mr={1}>
-                  <Button
-                    size="xsmall"
-                    onClick={onRunQuery}
-                    priority="primary"
-                    busy={isFetchingQuery}
-                  >
-                    {t('Run')}
-                    {isFetchingQuery && <ButtonSpinner />}
-                  </Button>
-                </Box>
+        <form onSubmit={onRunQuery}>
+          <QueryFields
+            queryBuilder={queryBuilder}
+            onUpdateField={onUpdateField}
+            isLoading={isLoading}
+            actions={
+              <Flex justify="space-between">
+                <Flex>
+                  <Box mr={1}>
+                    <Button
+                      size="xsmall"
+                      type="submit"
+                      priority="primary"
+                      busy={isFetchingQuery}
+                    >
+                      {t('Run')}
+                      {isFetchingQuery && <ButtonSpinner />}
+                    </Button>
+                  </Box>
+                  <Box>
+                    <Button size="xsmall" onClick={() => this.saveQuery()}>
+                      {t('Save')}
+                    </Button>
+                  </Box>
+                </Flex>
                 <Box>
-                  <Button size="xsmall" onClick={() => this.saveQuery()}>
-                    {t('Save')}
+                  <Button size="xsmall" onClick={onReset}>
+                    {t('Reset')}
                   </Button>
                 </Box>
               </Flex>
-              <Box>
-                <Button size="xsmall" onClick={onReset}>
-                  {t('Reset')}
-                </Button>
-              </Box>
-            </Flex>
-          }
-        />
+            }
+          />
+        </form>
       </QueryFieldsContainer>
     );
   }

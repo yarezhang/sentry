@@ -5,7 +5,7 @@ const events = {
   fields: [],
   conditions: [],
   aggregations: [['count()', null, 'Events']],
-  limit: 1000,
+  limit: 10000,
 
   orderby: '-time',
   groupby: ['time'],

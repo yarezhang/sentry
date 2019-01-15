@@ -185,7 +185,8 @@ export default function createQueryBuilder(initial = {}, organization) {
     }
 
     if (typeof data.limit === 'number') {
-      if (data.limit < 1 || data.limit > 1000) {
+      // We would like limit to be higher for dashboard widgets, but limit to 1000 on discover UI
+      if (data.limit < 1 || data.limit > 10000) {
         return Promise.reject(new Error(t('Invalid limit parameter')));
       }
     }

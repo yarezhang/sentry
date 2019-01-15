@@ -180,7 +180,10 @@ export default class OrganizationDiscover extends React.Component {
     this.runQuery();
   };
 
-  runQuery = () => {
+  runQuery = e => {
+    // This can be called from an event handler (e.g. on form submit)
+    e?.preventDefault();
+
     const {queryBuilder, organization, location} = this.props;
     const {resultManager} = this.state;
 

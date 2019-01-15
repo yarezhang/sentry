@@ -5,7 +5,7 @@ const anonymousUsersAffectedQuery = {
   fields: [],
   conditions: [['user.email', 'IS NULL', null]],
   aggregations: [['count()', null, 'Anonymous Users']],
-  limit: 1000,
+  limit: 10000,
 
   orderby: '-time',
   groupby: ['time'],
